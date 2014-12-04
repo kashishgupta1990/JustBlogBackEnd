@@ -1,0 +1,66 @@
+{
+  "common": {
+    "server": {
+      "host": "localhost",
+      "port": "7002",
+      "allowCrossDomain": true
+    },
+    "database": {
+      "host": "db-host-url",
+      "port": "53390",
+      "db": "dn-name",
+      "user": "user-name",
+      "password": "******",
+      "poolSize": 5,
+      "tryToConnect": true
+    }
+  },
+  "development": {
+    "server": {
+      "host": "localhost",
+      "port": "7002",
+      "allowCrossDomain": true
+    },
+    "database": {
+      "host": "db-host-url",
+      "port": "53390",
+      "db": "dn-name",
+      "user": "user-name",
+      "password": "******",
+      "poolSize": 5,
+      "tryToConnect": true
+    }
+  },
+  "staging": {
+    "server": {
+      "host": "localhost",
+      "port": "7002",
+      "allowCrossDomain": true
+    },
+    "database": {
+      "host": "db-host-url",
+      "port": "53390",
+      "db": "dn-name",
+      "user": "user-name",
+      "password": "******",
+      "poolSize": 5,
+      "tryToConnect": true
+    }
+  },
+  "testing": {
+    "server": {
+      "host": "localhost",
+      "port": "7002",
+      "allowCrossDomain": true
+    },
+    "database": {
+      "host": "db-host-url",
+      "port": "53390",
+      "db": "dn-name",
+      "user": "user-name",
+      "password": "******",
+      "poolSize": 5,
+      "tryToConnect": true
+    }
+  }
+}
