@@ -17,7 +17,7 @@ module.exports = [
         }
     },
     {
-        method: 'POST',
+        method: ['GET', 'POST'],
         path: '/api/test/test2',
         config: {
             description: 'Get Test-2',

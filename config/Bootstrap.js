@@ -45,7 +45,6 @@ module.exports = function (environment, callback) {
         });
     }
 
-    //Sample Task
     function Test(callback) {
         log.cool('Test Task Runner');
         callback(null, 'Test Task Runner')

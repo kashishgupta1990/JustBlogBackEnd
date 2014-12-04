@@ -6,11 +6,11 @@
       "allowCrossDomain": true
     },
     "database": {
-      "host": "db-host-url",
+      "host": "ds053390.mongolab.com",
       "port": "53390",
-      "db": "dn-name",
-      "user": "user-name",
-      "password": "******",
+      "db": "suitsandsarees",
+      "user": "suitsandsarees",
+      "password": "crazy123+",
       "poolSize": 5,
       "tryToConnect": true
     }
@@ -22,11 +22,11 @@
       "allowCrossDomain": true
     },
     "database": {
-      "host": "db-host-url",
+      "host": "ds053390.mongolab.com",
       "port": "53390",
-      "db": "dn-name",
-      "user": "user-name",
-      "password": "******",
+      "db": "suitsandsarees",
+      "user": "suitsandsarees",
+      "password": "crazy123+",
       "poolSize": 5,
       "tryToConnect": true
     }
@@ -38,11 +38,11 @@
       "allowCrossDomain": true
     },
     "database": {
-      "host": "db-host-url",
+      "host": "ds053390.mongolab.com",
       "port": "53390",
-      "db": "dn-name",
-      "user": "user-name",
-      "password": "******",
+      "db": "suitsandsarees",
+      "user": "suitsandsarees",
+      "password": "crazy123+",
       "poolSize": 5,
       "tryToConnect": true
     }
@@ -54,11 +54,11 @@
       "allowCrossDomain": true
     },
     "database": {
-      "host": "db-host-url",
+      "host": "ds053390.mongolab.com",
       "port": "53390",
-      "db": "dn-name",
-      "user": "user-name",
-      "password": "******",
+      "db": "suitsandsarees",
+      "user": "suitsandsarees",
+      "password": "crazy123+",
       "poolSize": 5,
       "tryToConnect": true
     }
