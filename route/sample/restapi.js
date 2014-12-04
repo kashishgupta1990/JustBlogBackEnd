@@ -6,7 +6,7 @@ var Joi = require('joi');
 module.exports = [
     {
         method: 'GET',
-        path: '/api/test/test1',
+        path: '/rest/test/test1',
         config: {
             description: 'Get Test-1',
             notes: 'Yes, I am doing testing',
@@ -18,7 +18,7 @@ module.exports = [
     },
     {
         method: ['GET', 'POST'],
-        path: '/api/test/test2',
+        path: '/rest/test/test2',
         config: {
             description: 'Get Test-2',
             notes: 'Yes, I am doing testing',
