@@ -27,7 +27,7 @@ module.exports = [
                         if (err) {
                             reply({status: 'User not saved'});
                         } else {
-                            log.cool('Super User Created Successfully');
+                            log.cool('User Created Successfully');
                             reply({status: 'User Successfully Added'});
                         }
                     });

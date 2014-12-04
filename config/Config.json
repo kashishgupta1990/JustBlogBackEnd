@@ -6,11 +6,7 @@
       "allowCrossDomain": true
     },
     "database": {
-      "host": "db-host-url",
-      "port": "53390",
-      "db": "dn-name",
-      "user": "user-name",
-      "password": "******",
+      "url": "mongodb://localhost:27017/blog",
       "poolSize": 5,
       "tryToConnect": true
     }
@@ -22,7 +18,7 @@
       "allowCrossDomain": true
     },
     "database": {
-      "url":"mongodb://localhost:27017/blog",
+      "url": "mongodb://localhost:27017/test",
       "poolSize": 5,
       "tryToConnect": true
     }
@@ -34,11 +30,7 @@
       "allowCrossDomain": true
     },
     "database": {
-      "host": "db-host-url",
-      "port": "53390",
-      "db": "dn-name",
-      "user": "user-name",
-      "password": "******",
+      "url": "mongodb://localhost:27017/blog",
       "poolSize": 5,
       "tryToConnect": true
     }
@@ -50,11 +42,7 @@
       "allowCrossDomain": true
     },
     "database": {
-      "host": "db-host-url",
-      "port": "53390",
-      "db": "dn-name",
-      "user": "user-name",
-      "password": "******",
+      "url": "mongodb://localhost:27017/blog",
       "poolSize": 5,
       "tryToConnect": true
     }

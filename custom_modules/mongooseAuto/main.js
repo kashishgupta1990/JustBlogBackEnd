@@ -8,11 +8,11 @@ module.exports = function MongooseDB(database, callback) {
 
     //Methods
     function Connect() {
-        mongoose.connect(dbURI, {server: {poolSize: database.poolSize}},function(dd,err){
-            console.log(dd, err);
-            if(err){
-                log.error('Failed to connect with MongoDB - reconnecting in 3 seconds. '+err);
-                setTimeout(Connect,3000);
+        var dbURI = _config.database.url;
+        mongoose.connect(dbURI, {server: {poolSize: database.poolSize}}, function (dd, err) {
+            if (err) {
+                log.error('Failed to connect with MongoDB - reconnecting in 3 seconds. ' + err);
+                setTimeout(Connect, 3000);
             }
         });
     }
@@ -30,7 +30,7 @@ module.exports = function MongooseDB(database, callback) {
     }
 
     //DB Url format refactored for development enviroment.
-    var dbURI =database.url;
+    var dbURI = database.url;
     Connect();
     dirStructureToObject(path.resolve(__dirname, '../../mongooseDomain'), function (error, model) {
         if (error) {
