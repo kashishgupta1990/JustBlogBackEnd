@@ -13,7 +13,7 @@ module.exports = function (environment, callback) {
 
     function play(environment) {
         async.series(env[environment], function (err, result) {
-            log.info('Booting process completed.');
+            log.cool('Booting process completed.');
             callback(err, result);
         })
     }

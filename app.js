@@ -11,7 +11,8 @@ var Hapi = require('hapi'),
     pack = require('./package.json'),
     hapiSwagger = require('hapi-swagger'),
     task = [],
-    server = {};
+    server = {},
+    plug = require('./config/plug.json');
 
 //Setting Up env
 task.push(function (callback) {
@@ -33,7 +34,12 @@ task.push(function (callback) {
 
 //Mongoose
 task.push(function (callback) {
-    mongooseAuto(_config.database, callback);
+    if (plug.mongoose) {
+        mongooseAuto(_config.database, callback);
+    } else {
+        callback(null, 'Do nothing');
+    }
+
 });
 
 //Running Bootstrap Task
@@ -51,15 +57,29 @@ task.push(function (callback) {
 
 //Add Plugin
 task.push(function (callback) {
-    server.pack.register({
-        plugin: hapiSwagger,
-        options: {
-            apiVersion: pack.version,
-            basePath: 'http://' + _config.server.host + ':' + _config.server.port,
-            payloadType: 'json'
+    var plugin = [];
+
+    plugin.push(function (cb) {
+        if (plug.hapiPlugin.Swagger) {
+            server.pack.register({
+                plugin: hapiSwagger,
+                options: {
+                    apiVersion: pack.version,
+                    basePath: 'http://' + _config.server.host + ':' + _config.server.port,
+                    payloadType: 'json'
+                }
+            }, function (err) {
+                var msg = 'Swagger interface loaded';
+                log.cool(msg);
+                cb(err, msg);
+            });
+        } else {
+            cb(null, 'Skip Swagger Plugin');
         }
-    }, function (err) {
-        callback(err, 'Swagger interface loaded');
+    });
+
+    async.series(plugin, function (err, rslt) {
+        callback(err, rslt);
     });
 });
 
