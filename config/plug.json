@@ -1,5 +1,9 @@
 {
   "hapiPlugin": {
     "Swagger": true
+  },
+  "ecma6Plugin": {
+    "enabled": true,
+    "debug": false
   }
 }

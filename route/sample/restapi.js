@@ -17,6 +17,18 @@ module.exports = [
         }
     },
     {
+        method: 'GET',
+        path: '/rest/test/special',
+        config: {
+            description: 'Get Test-1',
+            notes: 'Yes, I am doing testing',
+            tags: ['api'],
+            handler: (request, reply)=> {
+                reply({status: 'my ecma6 special reply'});
+            }
+        }
+    },
+    {
         method: ['GET', 'POST'],
         path: '/rest/test/test2',
         config: {

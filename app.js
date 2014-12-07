@@ -6,13 +6,14 @@ var Hapi = require('hapi'),
     appConfig = require('./config/Config.json'),
     mongooseAuto = require('./custom_modules/mongooseAuto'),
     async = require('async'),
-    bootstrap = require('./config/Bootstrap'),
     log = require('./custom_modules/custom-imagemin-log'),
     pack = require('./package.json'),
     hapiSwagger = require('hapi-swagger'),
+    es6Support = require('./custom_modules/es6Support'),
     task = [],
     server = {},
-    plug = require('./config/plug.json');
+    plug = require('./config/plug.json'),
+    bootstrap;
 
 //Setting Up env
 task.push(function (callback) {
@@ -22,14 +23,36 @@ task.push(function (callback) {
     callback(null, msg);
 });
 
+//Custom Logger
+task.push(function (callback) {
+    global.log = log;
+    var msg = 'Setting up Custom Logger';
+    log.info(msg);
+    callback(null, msg);
+});
+
 //Setting up global object
 //eg: _config, log
 task.push(function (callback) {
-    global.log = log;
     globalUtility.setGlobalConstant({_config: appConfig[process.env.name]});
     var msg = 'Setting up Global Configuration';
     log.info(msg);
-    callback(null, msg)
+    callback(null, msg);
+});
+
+//ECMA6 Support Plugin
+task.push(function (callback) {
+    var msg = 'ECMA6 Plugin Enable';
+    if (plug.ecma6Plugin.enabled) {
+        globalUtility.setGlobalConstant({requireEcma6: es6Support(__dirname, plug.ecma6Plugin.debug).init});
+        es6Support(__dirname, plug.ecma6Plugin.debug).clear();
+        log.info(msg);
+        callback(null, msg);
+    } else {
+        msg = 'ECMA6 Plugin Disable';
+        log.info(msg);
+        callback(null, msg);
+    }
 });
 
 //Mongoose
@@ -39,6 +62,11 @@ task.push(function (callback) {
 
 //Running Bootstrap Task
 task.push(function (callback) {
+    if (plug.ecma6Plugin.enabled) {
+        bootstrap = requireEcma6('config/Bootstrap.js');
+    } else {
+        bootstrap = require('./config/Bootstrap');
+    }
     log.info('Booting up your application');
     bootstrap(process.env.name, callback);
 });
@@ -80,6 +108,7 @@ task.push(function (callback) {
 
 //Apply Routing Config
 task.push(function (callback) {
+
     function applyRouteConfig(dirPath) {
         var dirName = dirPath;
         var data = fs.readdirSync(dirName);
@@ -88,7 +117,11 @@ task.push(function (callback) {
             if (fs.lstatSync(path).isDirectory()) {
                 applyRouteConfig(path);
             } else {
-                server.route(require(path));
+                if (plug.ecma6Plugin.enabled) {
+                    server.route(requireEcma6(path));
+                } else {
+                    server.route(require(path));
+                }
             }
         });
     }
@@ -105,5 +138,7 @@ async.series(task, function (err, data) {
     server.start(function () {
         log.cool('Server running on SERVER: ' + _config.server.host + ' PORT:' + process.env.PORT);
     });
+
+
 });
 

@@ -29,8 +29,10 @@
     "imagemin-log": "^2.0.0",
     "joi": "^5.0.2",
     "lodash": "^2.4.1",
+    "mkdirp": "^0.5.0",
     "mongoose": "^3.8.19",
     "path": "^0.4.9",
-    "squeak": "^1.0.0"
+    "squeak": "^1.0.0",
+    "traceur": "0.0.79"
   }
 }
