@@ -34,12 +34,7 @@ task.push(function (callback) {
 
 //Mongoose
 task.push(function (callback) {
-    if (plug.mongoose) {
-        mongooseAuto(_config.database, callback);
-    } else {
-        callback(null, 'Do nothing');
-    }
-
+    mongooseAuto(_config.database, callback);
 });
 
 //Running Bootstrap Task

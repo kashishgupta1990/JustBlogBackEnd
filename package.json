@@ -1,13 +1,12 @@
 {
   "name": "HapiMongooseBoilerplate",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "start": "node app.js"
   },
   "author": {
     "name": "Kashish Gupta"
   },
-  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/kashishgupta1990/HapiMongooseBoilerplate.git"
@@ -23,13 +22,15 @@
   ],
   "dependencies": {
     "async": "^0.9.0",
+    "figures": "^1.3.5",
     "hapi": "^7.5.2",
+    "hapi-auth-cookie": "^1.4.2",
     "hapi-swagger": "^0.5.1",
     "imagemin-log": "^2.0.0",
     "joi": "^5.0.2",
+    "lodash": "^2.4.1",
     "mongoose": "^3.8.19",
     "path": "^0.4.9",
-    "figures": "^1.3.5",
     "squeak": "^1.0.0"
   }
 }

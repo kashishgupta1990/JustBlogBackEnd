@@ -1,5 +1,4 @@
 {
-  "mongoose": true,
   "hapiPlugin": {
     "Swagger": true
   }
