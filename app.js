@@ -101,7 +101,25 @@ task.push(function (callback) {
         }
     });
 
-    async.series(plugin, function (err, rslt) {
+    plugin.push(function (callback) {
+        var msg = 'Hapi Auth Cookie Enabled';
+        if (plug.hapiPlugin.hapiAuthCookie) {
+            server.pack.register(require('hapi-auth-cookie'), function (err) {
+                server.auth.strategy('session', 'cookie', {
+                    password: _config.cookie.password,
+                    cookie: _config.cookie.cookie,
+                    redirectTo: _config.cookie.redirectTo,
+                    isSecure: _config.cookie.isSecure
+                });
+                callback(err, msg)
+            });
+        } else {
+            msg = 'Hapi Auth Cookie Disable';
+            callback(null, msg);
+        }
+    });
+
+    async.parallel(plugin, function (err, rslt) {
         callback(err, rslt);
     });
 });
@@ -138,7 +156,5 @@ async.series(task, function (err, data) {
     server.start(function () {
         log.cool('Server running on SERVER: ' + _config.server.host + ' PORT:' + process.env.PORT);
     });
-
-
 });
 

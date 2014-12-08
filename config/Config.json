@@ -9,6 +9,12 @@
       "url": "mongodb://localhost:27017/blog",
       "poolSize": 5,
       "tryToConnect": true
+    },
+    "cookie": {
+      "password": "secret",
+      "cookie": "hm-boilerplate",
+      "redirectTo": "/login",
+      "isSecure": false
     }
   },
   "development": {
@@ -21,6 +27,12 @@
       "url": "mongodb://localhost:27017/test",
       "poolSize": 5,
       "tryToConnect": true
+    },
+    "cookie": {
+      "password": "secret",
+      "cookie": "sid-example",
+      "redirectTo": "/login",
+      "isSecure": false
     }
   },
   "staging": {
@@ -33,6 +45,12 @@
       "url": "mongodb://localhost:27017/blog",
       "poolSize": 5,
       "tryToConnect": true
+    },
+    "cookie": {
+      "password": "secret",
+      "cookie": "sid-example",
+      "redirectTo": "/login",
+      "isSecure": false
     }
   },
   "testing": {
@@ -45,6 +63,12 @@
       "url": "mongodb://localhost:27017/blog",
       "poolSize": 5,
       "tryToConnect": true
+    },
+    "cookie": {
+      "password": "secret",
+      "cookie": "sid-example",
+      "redirectTo": "/login",
+      "isSecure": false
     }
   }
 }

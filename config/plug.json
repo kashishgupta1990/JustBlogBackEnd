@@ -1,6 +1,7 @@
 {
   "hapiPlugin": {
-    "Swagger": true
+    "Swagger": true,
+    "hapiAuthCookie": true
   },
   "ecma6Plugin": {
     "enabled": true,
