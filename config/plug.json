@@ -6,5 +6,8 @@
   "ecma6Plugin": {
     "enabled": true,
     "debug": false
+  },
+  "redis": {
+    "enabled": true
   }
 }

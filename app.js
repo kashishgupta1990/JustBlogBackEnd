@@ -13,7 +13,8 @@ var Hapi = require('hapi'),
     task = [],
     server = {},
     plug = require('./config/plug.json'),
-    bootstrap;
+    bootstrap,
+    redis = require('redis');
 
 //Setting Up env
 task.push(function (callback) {
@@ -38,6 +39,30 @@ task.push(function (callback) {
     var msg = 'Setting up Global Configuration';
     log.info(msg);
     callback(null, msg);
+});
+
+//Redis
+task.push(function (callback) {
+    var msg = 'Redis Plugin Enable',
+        client;
+
+    if (plug.redis.enabled) {
+        client = redis.createClient(_config.redis.port,
+            _config.redis.host,
+            {no_ready_check: true});
+
+        if (_config.redis.password) {
+            client.auth(_config.redis.password, function () {
+                log.info('Server: Redis connected successfully');
+                global.redis = client;
+                callback(null, msg);
+            });
+        }
+    } else {
+        msg = 'Redis is disabled';
+        log.info(msg);
+        callback(null, msg);
+    }
 });
 
 //ECMA6 Support Plugin
@@ -152,9 +177,13 @@ task.push(function (callback) {
 
 //Run Server
 async.series(task, function (err, data) {
-    // Start the server
-    server.start(function () {
-        log.cool('Server running on SERVER: ' + _config.server.host + ' PORT:' + process.env.PORT);
-    });
+    if (err) {
+        process.exit();
+    } else {
+        // Start the server
+        server.start(function () {
+            log.cool('Server running on SERVER: ' + _config.server.host + ' PORT:' + process.env.PORT);
+        });
+    }
 });
 

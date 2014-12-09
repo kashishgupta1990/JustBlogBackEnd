@@ -15,6 +15,12 @@
       "cookie": "hm-boilerplate",
       "redirectTo": "/login",
       "isSecure": false
+    },
+    "redis": {
+      "resource": "",
+      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "port": 17203,
+      "password": "crazy123+"
     }
   },
   "development": {
@@ -33,6 +39,12 @@
       "cookie": "sid-example",
       "redirectTo": "/login",
       "isSecure": false
+    },
+    "redis": {
+      "resource": "",
+      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "port": 17203,
+      "password": "crazy123+"
     }
   },
   "staging": {
@@ -51,6 +63,12 @@
       "cookie": "sid-example",
       "redirectTo": "/login",
       "isSecure": false
+    },
+    "redis": {
+      "resource": "",
+      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "port": 17203,
+      "password": "crazy123+"
     }
   },
   "testing": {
@@ -69,6 +87,12 @@
       "cookie": "sid-example",
       "redirectTo": "/login",
       "isSecure": false
+    },
+    "redis": {
+      "resource": "",
+      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "port": 17203,
+      "password": "crazy123+"
     }
   }
 }

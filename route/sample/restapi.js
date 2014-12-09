@@ -12,6 +12,7 @@ module.exports = [
             notes: 'Yes, I am doing testing',
             tags: ['api'],
             handler: function (request, reply) {
+                redis.set('name','kashish');
                 reply({status: 'I am Test-1 API'});
             }
         }
