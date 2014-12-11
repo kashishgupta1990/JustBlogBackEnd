@@ -13,8 +13,7 @@ var Hapi = require('hapi'),
     task = [],
     server = {},
     plug = require('./config/plug.json'),
-    bootstrap,
-    redis = require('redis');
+    bootstrap;
 
 //Setting Up env
 task.push(function (callback) {
@@ -41,30 +40,6 @@ task.push(function (callback) {
     callback(null, msg);
 });
 
-//Redis
-task.push(function (callback) {
-    var msg = 'Redis Plugin Enable',
-        client;
-
-    if (plug.redis.enabled) {
-        client = redis.createClient(_config.redis.port,
-            _config.redis.host,
-            {no_ready_check: true});
-
-        if (_config.redis.password) {
-            client.auth(_config.redis.password, function () {
-                log.info('Server: Redis connected successfully');
-                global.redis = client;
-                callback(null, msg);
-            });
-        }
-    } else {
-        msg = 'Redis is disabled';
-        log.info(msg);
-        callback(null, msg);
-    }
-});
-
 //ECMA6 Support Plugin
 task.push(function (callback) {
     var msg = 'ECMA6 Plugin Enable';
@@ -74,6 +49,7 @@ task.push(function (callback) {
         log.info(msg);
         callback(null, msg);
     } else {
+        global.requireEcma6 = require;
         msg = 'ECMA6 Plugin Disable';
         log.info(msg);
         callback(null, msg);

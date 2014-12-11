@@ -1,6 +1,7 @@
 "use strict";
 
-var Joi = require('joi');
+var Joi = require('joi'),
+    redis = require('../../custom_redis/main');
 
 //Routs Lists
 //Refer: http://hapijs.com/tutorials/routing
@@ -14,6 +15,23 @@ module.exports = [
             tags: ['api'],
             handler: function (request, reply) {
                 reply({status: 'I am Test-1 API'});
+            }
+        }
+    },
+    {
+        method: 'GET',
+        path: '/api/connectRedis',
+        config: {
+            description: 'Get Test-1',
+            notes: 'Yes, I am doing testing',
+            tags: ['api'],
+            handler: function (request, reply) {
+               new redis().start(function (err, client) {
+                   client.set('table:user','kashish');
+                   client.get('table:user', function (err,data) {
+                       reply({status: data});
+                   });
+                });
             }
         }
     },
