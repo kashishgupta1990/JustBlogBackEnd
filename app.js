@@ -1,5 +1,6 @@
 "use strict";
 
+//Variables List
 var Hapi = require('hapi'),
     fs = require('fs'),
     globalUtility = require('./custom_modules/global_utility'),

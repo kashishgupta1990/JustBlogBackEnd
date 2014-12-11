@@ -17,8 +17,12 @@ module.exports = function (appDirectoryPath, debugFlag) {
 
     function init(filePath) {
         var srcPath = filePath,
-            destPath = tmpPath + '/' + path.basename(srcPath),
-            contents = fs.readFileSync(srcPath).toString();
+            fileName = path.basename(srcPath),
+            destPath = tmpPath + '/' + fileName,
+            preDestPath = destPath.replace(fileName,''),
+            contents = fs.readFileSync(srcPath).toString(),
+            newDestinationPath = preDestPath + +new Date() + '_' + fileName,
+            sourceMap;
 
         // Create a compiler with your options
         var compiler = new traceurAPI.NodeCompiler({
@@ -34,11 +38,12 @@ module.exports = function (appDirectoryPath, debugFlag) {
         }
 
         // Retrieve the sourcemap.
-        var sourceMap = compiler.getSourceMap();
-        fs.writeFileSync(destPath, compiled);
-        fs.writeFileSync(destPath + '.map', sourceMap);
+        sourceMap = compiler.getSourceMap();
 
-        return require(destPath);
+        fs.writeFileSync(newDestinationPath, compiled);
+        fs.writeFileSync(newDestinationPath + '.map', sourceMap);
+
+        return require(newDestinationPath);
     }
 
     function clear() {
