@@ -20,19 +20,19 @@ We are Hapi to release this exciting version to build your Node app on HapiMongo
    - add yourself ...
   - route
    - api
-    - test1.js
-    - add yourself ...
+       - test1.js
+       - add yourself ...
    - example
-    - auth.js 
-    - dbOperation.js
-    - ecma6api.js
-    - redisOperation.js
-    - restapi.js
-    - add yourself ...
-   - sample
-    - restapi.js
-    - add yourself ...
-   - add yourself ...
+       - auth.js 
+       - dbOperation.js
+       - ecma6api.js
+       - redisOperation.js
+       - restapi.js
+       - add yourself ...
+    - sample
+       - restapi.js
+       - add yourself ...
+       - add yourself ...
 
 ## Download
 
