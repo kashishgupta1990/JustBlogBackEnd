@@ -18,7 +18,7 @@
     },
     "redis": {
       "resource": "",
-      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "host": "enter-your-redis-host-name",
       "port": 17203,
       "password": "crazy123+"
     }
@@ -42,7 +42,7 @@
     },
     "redis": {
       "resource": "",
-      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "host": "enter-your-redis-host-name",
       "port": 17203,
       "password": "crazy123+"
     }
@@ -66,7 +66,7 @@
     },
     "redis": {
       "resource": "",
-      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "host": "enter-your-redis-host-name",
       "port": 17203,
       "password": "crazy123+"
     }
@@ -90,7 +90,7 @@
     },
     "redis": {
       "resource": "",
-      "host": "pub-redis-17203.us-east-1-4.4.ec2.garantiadata.com",
+      "host": "enter-your-redis-host-name",
       "port": 17203,
       "password": "crazy123+"
     }
