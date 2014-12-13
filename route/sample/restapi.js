@@ -5,21 +5,21 @@ var Joi = require('joi');
 //Routs Lists
 module.exports = [
     {
-        method: 'GET',
         path: '/rest/test/test1',
+        method: 'GET',
         config: {
             description: 'Get Test-1',
             notes: 'Yes, I am doing testing',
             tags: ['api'],
             handler: function (request, reply) {
-                redis.set('name','kashish');
+                redis.set('name', 'kashish');
                 reply({status: 'I am Test-1 API'});
             }
         }
     },
     {
-        method: 'GET',
         path: '/rest/test/special',
+        method: 'GET',
         config: {
             description: 'Get Test-1',
             notes: 'Yes, I am doing testing',
@@ -30,8 +30,8 @@ module.exports = [
         }
     },
     {
-        method: ['GET', 'POST'],
         path: '/rest/test/test2',
+        method: ['GET', 'POST'],
         config: {
             description: 'Get Test-2',
             notes: 'Yes, I am doing testing',

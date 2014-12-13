@@ -6,7 +6,7 @@ var Joi = require('joi');
 module.exports = [
     {
         method: 'POST',
-        path: '/user',
+        path: '/mongoose/example/user/',
         config: {
             validate: {
                 payload: {
@@ -14,8 +14,8 @@ module.exports = [
                     password: Joi.string().required()
                 }
             },
-            description: 'Get Test-2',
-            notes: 'Yes, I am doing test value',
+            description: 'Save User',
+            notes: 'Username and Password Required',
             tags: ['api'],
             handler: function (request, reply) {
 
