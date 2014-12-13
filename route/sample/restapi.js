@@ -5,7 +5,7 @@ var Joi = require('joi');
 //Routs Lists
 module.exports = [
     {
-        path: '/rest/test/test1',
+        path: '/sample/test/test1',
         method: 'GET',
         config: {
             description: 'Get Test-1',
@@ -18,7 +18,7 @@ module.exports = [
         }
     },
     {
-        path: '/rest/test/special',
+        path: '/sample/test/special',
         method: 'GET',
         config: {
             description: 'Get Test-1',
@@ -30,7 +30,7 @@ module.exports = [
         }
     },
     {
-        path: '/rest/test/test2',
+        path: '/sample/test/test2',
         method: ['GET', 'POST'],
         config: {
             description: 'Get Test-2',

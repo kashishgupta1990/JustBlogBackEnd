@@ -7,35 +7,6 @@ var Joi = require('joi'),
 //Refer: http://hapijs.com/tutorials/routing
 module.exports = [
     {
-        method: 'GET',
-        path: '/api/test/test11',
-        config: {
-            description: 'Get Test-1',
-            notes: 'Yes, I am doing testing',
-            tags: ['api'],
-            handler: function (request, reply) {
-                reply({status: 'I am Test-1 API'});
-            }
-        }
-    },
-    {
-        method: 'GET',
-        path: '/api/connectRedis',
-        config: {
-            description: 'Get Test-1',
-            notes: 'Yes, I am doing testing',
-            tags: ['api'],
-            handler: function (request, reply) {
-               new redis().start(function (err, client) {
-                   client.set('table:user','kashish');
-                   client.get('table:user', function (err,data) {
-                       reply({status: data});
-                   });
-                });
-            }
-        }
-    },
-    {
         method: 'POST',
         path: '/api/test/test2/{myvalue}',
         config: {
