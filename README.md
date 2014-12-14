@@ -46,7 +46,7 @@ git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
 
 #### ``Bootstrap.js`` is a task runner file which executes automaticly on application start according to     approprate envirnment.Lets see quick example How to create task named ``Test`` and run on ``development`` envirnment ####
 ```javascript
-    module.exports = function (environment, callback) {
+module.exports = function (environment, callback) {
 
     //Add your task name here
     var env = {
@@ -59,6 +59,33 @@ git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
         callback(null, 'Test Task Runner')
     }
 };
+```
+#### ``Config.json`` contains all the application level configration variables. We can you config.json file variable by  ``_config`` global variable. Here we have example of ``development`` config. ####
+```javascript
+"development": {
+    "server": {
+      "host": "localhost",
+      "port": "7002",
+      "allowCrossDomain": true
+    },
+    "database": {
+      "url": "mongodb://localhost:27017/boilerplate",
+      "poolSize": 5,
+      "tryToConnect": true
+    },
+    "cookie": {
+      "password": "secret",
+      "cookie": "hm-boilerplate",
+      "redirectTo": "/login",
+      "isSecure": false
+    },
+    "redis": {
+      "resource": "",
+      "host": "enter-your-redis-host-name",
+      "port": 17203,
+      "password": "your-password"
+    }
+  }
 ```
 ## Lets Build Together ##
 Just open an issue in case found any bug.We are always open for suggessions / issue / add new feature request.
