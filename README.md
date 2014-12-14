@@ -1,9 +1,9 @@
-# Hapi Mongoose Boilerplate
+# Hapi Mongoose Boilerplate #
 
 This Boilerplate ready to use pack with very exciting feature of Hapi and Mongoose.We have added some common plugin which can be used as per required.This boilerplate gives you kick start to your Node Application Server.
 We are Hapi to release this exciting version to build your Node app on HapiMongooseBoilerplate ``v0.0.1`` release inspired by Kushal likhi boilerplate. 
 
-## Boilerplate Structure 
+## Boilerplate Structure ##
   - config
     - Bootstrap.js
     - Config.json
@@ -35,18 +35,16 @@ We are Hapi to release this exciting version to build your Node app on HapiMongo
        - add more files yourself...
    - add more route folder yourself... 
 
-##Installation##
-This library is available for **Node** and **Browser** both. See the installation steps below:
-
 ###Download###
 ```bash
 git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
 ```
 
-## Documentation
-## Setting up your configration 
-     - **Bootstrap.js** is a task runner file which executes automaticly on application start according to     approprate envirnment. Here is a quick sneak peak of the usage:
-     ```javascript
+## Documentation ##
+### Setting up your configration ###
+#### ``Bootstrap.js`` is a task runner file which executes automaticly on application start according to     approprate envirnment. Here is a quick usage ####
+
+```javascript
     require('operator-overloading');
      (function () {
      //A simple student constructor
@@ -65,11 +63,5 @@ git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
 }.enableOverloading()/*Here you are enabling overloading for this function scope only*/)();
 
 ```
-
-     
-    
-
-## Example
-
-## Lets Build Together
+## Lets Build Together ##
 Just open an issue in case found any bug.We are always open for suggessions / issue / add new feature request.
