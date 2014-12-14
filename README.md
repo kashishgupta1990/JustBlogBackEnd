@@ -102,7 +102,7 @@ module.exports = function (environment, callback) {
 ```
 ### Create Mongoose Domain and Modal ###
 
-#### ``mongooseDomain`` is a home for all mongoose domain, we just have to create file like ``User.js`` write your mongoose schema into file thats all. You can access your mongoose modal form every where in boilerplate (routes, bootstarp files) by ``Modal`` object it has every thing you need.Lets see example ####
+#### ``mongooseDomain`` is a home for all mongoose domain, we just have to create file like ``User.js`` write your mongoose schema into file thats all. You can access your mongoose modal form any where in boilerplate (routes, bootstarp files) by ``Modal`` object.Lets see example ####
 ##### ``Define User Domain`` in /mongooseDomain/User.js #####
 ```javascript
 "use strict";
@@ -114,7 +114,7 @@ module.exports = {
     password: String
 };
 ```
-##### ``Use User Modal`` any where from routs / bootstrap
+##### Use ``User Modal`` any where from routs / bootstrap
 ```javascript
 //Save New User
 new Modal.User({
@@ -177,6 +177,8 @@ module.exports = [
     }
 ];
 ```
+### How to use ``ECMAScript 6`` feature ###
+We introduce a new way to require special ECMAScript 6 files. Use ``requireEcma6`` insted of ``require`` to include file. We compile ecmaScript6 files to ecmaScript5 using Traceur module, the result of compiled file store in ``custome_modules/es6Support/temp`` folder. It mean when you require ecmaScript6 files you have to pass replative path of your es6 file according to temp directory. By default we can use ecmaScript6 syntax on route directory and bootstrap.js file.
 
 ## Lets Build Together ##
 Just open an issue in case found any bug.We are always open for suggessions / issue / add new feature request.
