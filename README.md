@@ -1,7 +1,7 @@
 # Hapi Mongoose Boilerplate #
 
 This Boilerplate ready to use pack with very exciting feature of Hapi and Mongoose.We have added some common plugin which can be used as per required.This boilerplate gives you kick start to your Node Application Server.
-We are Hapi to release this exciting version to build your Node app on HapiMongooseBoilerplate ``v0.0.1`` release inspired by Kushal likhi boilerplate. 
+Boilerpalte support ``ECAM Script 6`` syntax, we use Traceur library as a plugin. We are Hapi to release this exciting version to build your Node app on HapiMongooseBoilerplate ``v0.0.1`` release inspired by Kushal likhi boilerplate. 
 
 ## Boilerplate Structure ##
   - config
@@ -86,6 +86,56 @@ module.exports = function (environment, callback) {
       "password": "your-password"
     }
   }
+```
+#### ``plug.json`` you can plug or unplug your boilerplate extra feature like Hapi Swagger etc. Lets have look on plug.json config. ####
+```javascript
+{
+  "hapiPlugin": {
+    "Swagger": true,
+    "hapiAuthCookie": true
+  },
+  "ecma6Plugin": {
+    "enabled": true,
+    "debug": false 
+  }
+}
+```
+### Create Mongoose Domain and Modal ###
+
+#### ``mongooseDomain`` is a home for all mongoose domain, we just have to create file like ``User.js`` write your mongoose schema into file thats all. You can access your mongoose modal form every where in boilerplate (routes, bootstarp files) by ``Modal`` object it has every thing you need.Lets see example ####
+##### ``Define User Domain`` in /mongooseDomain/User.js #####
+```javascript
+"use strict";
+
+//Define User Schema
+//Refer: http://mongoosejs.com/docs/schematypes.html
+module.exports = {
+    username: String,
+    password: String
+};
+```
+##### ``Use User Modal`` any where from routs / bootstrap
+```javascript
+//Save New User
+ new Modal.User({
+      username: "admin",
+      password: "admin"
+    }).save(function (err, result) {
+               if (err) {
+                  log.error("Error Save Record: " + err);
+               } else {
+                  log.cool('User Save Successfully');
+               }
+       })
+
+//Get User
+Modal.User.find({username: 'admin'}, function (err, data) {
+            if (err) {
+                log.error(err);
+            } else {
+                log.cool(data);
+            }
+})
 ```
 ## Lets Build Together ##
 Just open an issue in case found any bug.We are always open for suggessions / issue / add new feature request.
