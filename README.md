@@ -38,6 +38,10 @@ We are Hapi to release this exciting version to build your Node app on HapiMongo
 ## Download
 
 ## Documentation
+#### Setting up your configration 
+    **Bootstrap.js** is a task runner file which executes automaticly on application start according to approprate envirnment.
+    #### Example 
+    
 
 ## Example
 
