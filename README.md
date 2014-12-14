@@ -91,12 +91,12 @@ module.exports = function (environment, callback) {
 ```javascript
 {
   "hapiPlugin": {
-    "Swagger": true,
-    "hapiAuthCookie": true
+    "Swagger": true, //Yes, I want Hapi Swagger 
+    "hapiAuthCookie": true //Yes, I want AuthCookie
   },
   "ecma6Plugin": {
-    "enabled": true,
-    "debug": false 
+    "enabled": true, //Yes, I want to enable ECMAScript6
+    "debug": false //But I dont want to see debug result
   }
 }
 ```
@@ -117,7 +117,7 @@ module.exports = {
 ##### ``Use User Modal`` any where from routs / bootstrap
 ```javascript
 //Save New User
- new Modal.User({
+new Modal.User({
       username: "admin",
       password: "admin"
     }).save(function (err, result) {
@@ -137,5 +137,46 @@ Modal.User.find({username: 'admin'}, function (err, data) {
             }
 })
 ```
+### How to define Routs ###
+
+#### ``route`` is a folder where we can define routs. Create folder in side route folder or you can directly create file with any name we want. File should follow this type of syntax. Here you can write handlers in ``Javascript ECMAScript-6`` syntax like below. ####
+```javascript
+"use strict";
+
+var Joi = require('joi');
+
+//Routs Lists
+module.exports = [
+    {
+        path: '/sample/test/special',
+        method: 'GET',
+        config: {
+            description: 'Get Test-1',
+            notes: 'Yes, I am doing testing',
+            tags: ['api'],
+            handler: (request, reply)=> {
+                reply({status: 'my ecma6 special reply'});
+            }
+        }
+    },
+    {
+        path: '/sample/test/test2',
+        method: ['GET', 'POST'],
+        config: {
+            description: 'Get Test-2',
+            notes: 'Yes, I am doing testing',
+            tags: ['api'],
+            handler: function (request, reply) {
+                reply({status: 'I am Test-2 API'});
+            }
+        }
+    },
+    {
+        //Here you can add more routs (Hapi Syntax)
+        //Refer: http://hapijs.com/tutorials/routing
+    }
+];
+```
+
 ## Lets Build Together ##
 Just open an issue in case found any bug.We are always open for suggessions / issue / add new feature request.
