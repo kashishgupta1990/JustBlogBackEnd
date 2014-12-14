@@ -35,12 +35,38 @@ We are Hapi to release this exciting version to build your Node app on HapiMongo
        - add more files yourself...
    - add more route folder yourself... 
 
-## Download
+##Installation##
+This library is available for **Node** and **Browser** both. See the installation steps below:
+
+###Download###
+```bash
+git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
+```
 
 ## Documentation
-#### Setting up your configration 
-    **Bootstrap.js** is a task runner file which executes automaticly on application start according to approprate envirnment.
-    #### Example 
+## Setting up your configration 
+     - **Bootstrap.js** is a task runner file which executes automaticly on application start according to     approprate envirnment. Here is a quick sneak peak of the usage:
+     ```javascript
+    require('operator-overloading');
+     (function () {
+     //A simple student constructor
+      function Student(name, marks) {
+        var _this = this;
+        this.name = name;
+        this.marks = marks;
+        //THIS is WHERE we OVERLOAD '+' Operator
+        this.__plus = function (leftOperand) {
+            return new Student([leftOperand.name, _this.name].join('+'), leftOperand.marks + _this.marks);
+        };
+        this.toString = function () {
+            return _this.name + ':' + _this.marks;
+        };
+    }
+}.enableOverloading()/*Here you are enabling overloading for this function scope only*/)();
+
+```
+
+     
     
 
 ## Example
