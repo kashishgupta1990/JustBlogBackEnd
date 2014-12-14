@@ -41,27 +41,24 @@ git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
 ```
 
 ## Documentation ##
+
 ### Setting up your configration ###
-#### ``Bootstrap.js`` is a task runner file which executes automaticly on application start according to     approprate envirnment. Here is a quick usage ####
 
+#### ``Bootstrap.js`` is a task runner file which executes automaticly on application start according to     approprate envirnment.Lets see quick example How to create task named ``Test`` and run on ``development`` envirnment ####
 ```javascript
-    require('operator-overloading');
-     (function () {
-     //A simple student constructor
-      function Student(name, marks) {
-        var _this = this;
-        this.name = name;
-        this.marks = marks;
-        //THIS is WHERE we OVERLOAD '+' Operator
-        this.__plus = function (leftOperand) {
-            return new Student([leftOperand.name, _this.name].join('+'), leftOperand.marks + _this.marks);
-        };
-        this.toString = function () {
-            return _this.name + ':' + _this.marks;
-        };
-    }
-}.enableOverloading()/*Here you are enabling overloading for this function scope only*/)();
+    module.exports = function (environment, callback) {
 
+    //Add your task name here
+    var env = {
+        "development": [Test]
+    };
+   
+    //Create your task like function
+    function Test(callback) {
+        log.cool('Test Task Runner');
+        callback(null, 'Test Task Runner')
+    }
+};
 ```
 ## Lets Build Together ##
 Just open an issue in case found any bug.We are always open for suggessions / issue / add new feature request.
