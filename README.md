@@ -1,7 +1,8 @@
 **Table of Contents**
 - [Hapi Mongoose Boilerplate](#Hapi-Mongoose-Boilerplate)
   - [Installation](#installation)
-    - [Download (GIT)](#download-git)
+    - [Download (git)](#download-git)
+    - [NPM Install (npm)](#npm-install)
   - [Boilerplate Structure](#boilerplate-structure)
   - [Setting up configration](#setting-up-configration)
     - [Bootstrap.js](#bootstrap.js)
@@ -27,9 +28,13 @@ This Boilerplate also supports ``ECAMA Script 6`` syntax. For that Traceur libra
 ##Installation##
 This library is available for **Node** only. See the installation steps below:
 
-###Download (GIT)##
+###Download(GIT)###
 ```bash
-git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
+$ git clone git@github.com:kashishgupta1990/HapiMongooseBoilerplate.git
+```
+###NPM Install(npm)###
+```bash
+$ npm install
 ```
 ##Boilerplate Structure##
 
