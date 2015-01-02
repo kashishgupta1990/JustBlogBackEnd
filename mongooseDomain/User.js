@@ -1,9 +1,10 @@
 "use strict";
 
-var Joi = require('joi');
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
 
-//Routs Lists
-//Refer: http://hapijs.com/tutorials/routing
+//Define User Schema
+//Refer: http://mongoosejs.com/docs/schematypes.html
 module.exports = {
     username: String,
     password: String

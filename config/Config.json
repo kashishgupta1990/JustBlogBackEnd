@@ -20,7 +20,7 @@
       "resource": "",
       "host": "enter-your-redis-host-name",
       "port": 17203,
-      "password": "crazy123+"
+      "password": "******"
     }
   },
   "development": {
@@ -44,7 +44,7 @@
       "resource": "",
       "host": "enter-your-redis-host-name",
       "port": 17203,
-      "password": "crazy123+"
+      "password": "****"
     }
   },
   "staging": {
@@ -68,7 +68,7 @@
       "resource": "",
       "host": "enter-your-redis-host-name",
       "port": 17203,
-      "password": "crazy123+"
+      "password": "*****"
     }
   },
   "testing": {

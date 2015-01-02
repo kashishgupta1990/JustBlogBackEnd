@@ -7,22 +7,13 @@ var Joi = require('joi'),
 //Refer: http://hapijs.com/tutorials/routing
 module.exports = [
     {
-        method: 'POST',
-        path: '/api/test/test2/{myvalue}',
+        method: 'GET',
+        path: '/',
         config: {
-            validate: {
-                params: {
-                    myvalue: Joi.string()
-                }
-            },
-            description: 'Get Test-2',
-            notes: 'Yes, I am doing test value',
-            tags: ['api'],
+            description: 'Default Page',
+            notes: 'Default Page',
             handler: function (request, reply) {
-                reply({
-                    status: 'I am Test-2 API',
-                    message: 'Your test value is ' + request.params.myvalue
-                });
+                reply('Welcome to Hapi Mongoose Boilerplate');
             }
         }
     }
