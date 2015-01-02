@@ -10,8 +10,6 @@ module.exports = [
         method: 'GET',
         path: '/',
         config: {
-            description: 'Default Page',
-            notes: 'Default Page',
             handler: function (request, reply) {
                 reply('Welcome to Hapi Mongoose Boilerplate');
             }
