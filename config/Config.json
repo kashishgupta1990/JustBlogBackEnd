@@ -15,12 +15,6 @@
       "cookie": "hm-boilerplate",
       "redirectTo": "/login",
       "isSecure": false
-    },
-    "redis": {
-      "resource": "",
-      "host": "enter-your-redis-host-name",
-      "port": 17203,
-      "password": "******"
     }
   },
   "development": {
@@ -39,12 +33,6 @@
       "cookie": "hm-boilerplate",
       "redirectTo": "/login",
       "isSecure": false
-    },
-    "redis": {
-      "resource": "",
-      "host": "enter-your-redis-host-name",
-      "port": 17203,
-      "password": "****"
     }
   },
   "staging": {
@@ -63,12 +51,6 @@
       "cookie": "hm-boilerplate",
       "redirectTo": "/login",
       "isSecure": false
-    },
-    "redis": {
-      "resource": "",
-      "host": "enter-your-redis-host-name",
-      "port": 17203,
-      "password": "*****"
     }
   },
   "testing": {
@@ -87,12 +69,6 @@
       "cookie": "hm-boilerplate",
       "redirectTo": "/login",
       "isSecure": false
-    },
-    "redis": {
-      "resource": "",
-      "host": "enter-your-redis-host-name",
-      "port": 17203,
-      "password": "your-password"
     }
   }
 }

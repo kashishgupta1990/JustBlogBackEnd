@@ -11,6 +11,7 @@ module.exports = [
             description: 'REST API in one go',
             notes: 'Yes, I am doing some fun..',
             tags: ['api'],
+            auth: 'session',
             cors: true,
             handler: function (request, reply) {
                 reply({status: 'Testing my REST API'});
