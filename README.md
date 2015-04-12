@@ -108,12 +108,6 @@ module.exports = function (environment, callback) {
       "cookie": "hm-boilerplate",
       "redirectTo": "/login",
       "isSecure": false
-    },
-    "redis": {
-      "resource": "",
-      "host": "enter-your-redis-host-name",
-      "port": 17203,
-      "password": "your-password"
     }
   }
 ```
@@ -214,11 +208,6 @@ module.exports = [
     }
 ];
 ```
-
-##How to use ECMA6 feature##
-We have introduced a new way to require special ECMA6 supporting files. Use ``requireEcma6`` instead of ``require`` to include ecma6 file. It will compile ecma6 files to ecma5 using ``Traceur`` module.
-As result, It will generate a compiled version of file in ``custome_modules/es6Support/temp`` folder. It means when you require ecma6 files you have to pass relative path of your es6 file according to temp directory.
-By default we can use ecma6 syntax on route directory and bootstrap.js file.
 
 ##Lets Build Together##
 Just open an issue in case found any bug(There is always a scope of improvement). We are always open for suggestion / issue / add new feature request. Fork and start creating pull request. :-)
