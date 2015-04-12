@@ -10,6 +10,7 @@ var Hapi = require('hapi'),
     log = require('./custom_modules/custom-imagemin-log'),
     pack = require('./package.json'),
     hapiSwagger = require('hapi-swagger'),
+    EventEmitter = require("events").EventEmitter,
     task = [],
     server = {},
     bootstrap;
@@ -94,6 +95,37 @@ task.push(function (callback) {
     async.parallel(plugin, function (err, rslt) {
         callback(err, rslt);
     });
+});
+
+//Apply Emitter Binding
+task.push(function (callback) {
+
+    var sharedService = new EventEmitter();
+
+    function createEmitterEvent(eventList) {
+        eventList.forEach(function (event) {
+            sharedService.on(event.eventName, event.handler);
+        });
+    }
+
+    function applyEmitterBind(dirPath) {
+        var dirName = dirPath;
+        var data = fs.readdirSync(dirName);
+        data.forEach(function (dta) {
+            var path = dirName + '/' + dta;
+            if (fs.lstatSync(path).isDirectory()) {
+                applyEmitterBind(path);
+            } else {
+                createEmitterEvent(require(path));
+            }
+        });
+    }
+
+    applyEmitterBind(__dirname + '/sharedServices');
+    globalUtility.setGlobalConstant({sharedService: sharedService});
+    var msg = 'Shared Service Events Binding Complete';
+    log.info(msg);
+    callback(null, msg);
 });
 
 //Apply Routing Config
