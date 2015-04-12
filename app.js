@@ -5,7 +5,7 @@ var Hapi = require('hapi'),
     fs = require('fs'),
     globalUtility = require('./custom_modules/global_utility'),
     appConfig = require('./config/Config.json'),
-   // mongooseAuto = require('./custom_modules/mongooseAuto'),
+    mongooseAuto = require('./custom_modules/mongooseAuto'),
     async = require('async'),
     log = require('./custom_modules/custom-imagemin-log'),
     pack = require('./package.json'),
@@ -40,10 +40,10 @@ task.push(function (callback) {
     callback(null, msg);
 });
 
-/*//Mongoose
+//Mongoose
 task.push(function (callback) {
     mongooseAuto(_config.database, callback);
-});*/
+});
 
 //Running Bootstrap Task
 task.push(function (callback) {
