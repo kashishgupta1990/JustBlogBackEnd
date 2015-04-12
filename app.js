@@ -10,7 +10,6 @@ var Hapi = require('hapi'),
     log = require('./custom_modules/custom-imagemin-log'),
     pack = require('./package.json'),
     hapiSwagger = require('hapi-swagger'),
-    es6Support = require('./custom_modules/es6Support'),
     task = [],
     server = {},
     plug = require('./config/plug.json'),
@@ -41,22 +40,6 @@ task.push(function (callback) {
     callback(null, msg);
 });
 
-//ECMA6 Support Plugin
-task.push(function (callback) {
-    var msg = 'ECMA6 Plugin Enable';
-    if (plug.ecma6Plugin.enabled) {
-        globalUtility.setGlobalConstant({requireEcma6: es6Support(__dirname, plug.ecma6Plugin.debug).init});
-        es6Support(__dirname, plug.ecma6Plugin.debug).clear();
-        log.info(msg);
-        callback(null, msg);
-    } else {
-        global.requireEcma6 = require;
-        msg = 'ECMA6 Plugin Disable';
-        log.info(msg);
-        callback(null, msg);
-    }
-});
-
 //Mongoose
 task.push(function (callback) {
     mongooseAuto(_config.database, callback);
@@ -64,11 +47,7 @@ task.push(function (callback) {
 
 //Running Bootstrap Task
 task.push(function (callback) {
-    if (plug.ecma6Plugin.enabled) {
-        bootstrap = requireEcma6('config/Bootstrap.js');
-    } else {
-        bootstrap = require('./config/Bootstrap');
-    }
+    bootstrap = require('./config/Bootstrap');
     log.info('Booting up your application');
     bootstrap(process.env.name, callback);
 });
@@ -137,11 +116,7 @@ task.push(function (callback) {
             if (fs.lstatSync(path).isDirectory()) {
                 applyRouteConfig(path);
             } else {
-                if (plug.ecma6Plugin.enabled) {
-                    server.route(requireEcma6(path));
-                } else {
-                    server.route(require(path));
-                }
+                server.route(require(path));
             }
         });
     }

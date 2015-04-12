@@ -1,7 +1,6 @@
 "use strict";
 
-var async = require('async'),
-    redis = require('../../custom_redis');
+var async = require('async');
 
 module.exports = function (environment, callback) {
 

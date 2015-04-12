@@ -1,8 +1,0 @@
-{
-  "name": "custom-redis",
-  "version": "0.0.1",
-  "main": "main",
-  "dependencies": {
-    "redis": "^0.12.1"
-  }
-}
