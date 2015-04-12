@@ -2,13 +2,13 @@ module.exports = [
     {
         eventName: 'someEvent',
         handler: function (data) {
-            console.log("some event occure", data);
+            log.info("some event occure", data);
         }
     },
     {
         eventName: 'someMoreEvent',
         handler: function () {
-            console.log("some more event occure");
+            log.info("some more event occure");
         }
     }
 ];

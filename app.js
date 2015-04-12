@@ -10,6 +10,7 @@ var Hapi = require('hapi'),
     log = require('./custom_modules/custom-imagemin-log'),
     pack = require('./package.json'),
     hapiSwagger = require('hapi-swagger'),
+    good = require('good'),
     EventEmitter = require("events").EventEmitter,
     task = [],
     server = {},
@@ -89,6 +90,26 @@ task.push(function (callback) {
                 isSecure: _config.cookie.isSecure
             });
             callback(err, msg)
+        });
+    });
+
+    plugin.push(function (cb) {
+        server.register({
+            register: good,
+            options: {
+                opsInterval: 1000,
+                reporters: [{
+                    reporter: require('good-console'),
+                    events: {log: '*', response: '*'}
+                }]
+            }
+        }, function (err) {
+            if (err) {
+                console.error(err);
+            }
+            var msg = 'Good Plugin loaded';
+            log.cool(msg);
+            cb(err, msg);
         });
     });
 
