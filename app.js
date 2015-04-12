@@ -5,7 +5,7 @@ var Hapi = require('hapi'),
     fs = require('fs'),
     globalUtility = require('./custom_modules/global_utility'),
     appConfig = require('./config/Config.json'),
-    mongooseAuto = require('./custom_modules/mongooseAuto'),
+   // mongooseAuto = require('./custom_modules/mongooseAuto'),
     async = require('async'),
     log = require('./custom_modules/custom-imagemin-log'),
     pack = require('./package.json'),
@@ -40,10 +40,10 @@ task.push(function (callback) {
     callback(null, msg);
 });
 
-//Mongoose
+/*//Mongoose
 task.push(function (callback) {
     mongooseAuto(_config.database, callback);
-});
+});*/
 
 //Running Bootstrap Task
 task.push(function (callback) {
@@ -55,7 +55,8 @@ task.push(function (callback) {
 //Init Server
 task.push(function (callback) {
     // Create a server with a host and port
-    server = new Hapi.Server(process.env.PORT = process.env.PORT || _config.server.port, {cors: _config.server.allowCrossDomain});
+    server = new Hapi.Server();
+    server.connection({port:process.env.PORT = process.env.PORT || _config.server.port});
     callback(null, 'server variable setting up');
 });
 
@@ -65,8 +66,8 @@ task.push(function (callback) {
 
     plugin.push(function (cb) {
         if (plug.hapiPlugin.Swagger) {
-            server.pack.register({
-                plugin: hapiSwagger,
+            server.register({
+                register: hapiSwagger,
                 options: {
                     apiVersion: pack.version,
                     basePath: 'http://' + _config.server.host + ':' + _config.server.port,
@@ -85,7 +86,7 @@ task.push(function (callback) {
     plugin.push(function (callback) {
         var msg = 'Hapi Auth Cookie Enabled';
         if (plug.hapiPlugin.hapiAuthCookie) {
-            server.pack.register(require('hapi-auth-cookie'), function (err) {
+            server.register(require('hapi-auth-cookie'), function (err) {
                 server.auth.strategy('session', 'cookie', {
                     password: _config.cookie.password,
                     cookie: _config.cookie.cookie,
