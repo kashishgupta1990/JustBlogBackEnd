@@ -1,6 +1,0 @@
-{
-  "hapiPlugin": {
-    "Swagger": true,
-    "hapiAuthCookie": true
-  }
-}

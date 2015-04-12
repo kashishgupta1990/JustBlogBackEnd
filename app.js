@@ -12,7 +12,6 @@ var Hapi = require('hapi'),
     hapiSwagger = require('hapi-swagger'),
     task = [],
     server = {},
-    plug = require('./config/plug.json'),
     bootstrap;
 
 //Setting Up env
@@ -56,7 +55,7 @@ task.push(function (callback) {
 task.push(function (callback) {
     // Create a server with a host and port
     server = new Hapi.Server();
-    server.connection({port:process.env.PORT = process.env.PORT || _config.server.port});
+    server.connection({port: process.env.PORT = process.env.PORT || _config.server.port});
     callback(null, 'server variable setting up');
 });
 
@@ -65,40 +64,31 @@ task.push(function (callback) {
     var plugin = [];
 
     plugin.push(function (cb) {
-        if (plug.hapiPlugin.Swagger) {
-            server.register({
-                register: hapiSwagger,
-                options: {
-                    apiVersion: pack.version,
-                    basePath: 'http://' + _config.server.host + ':' + _config.server.port,
-                    payloadType: 'json'
-                }
-            }, function (err) {
-                var msg = 'Swagger interface loaded';
-                log.cool(msg);
-                cb(err, msg);
-            });
-        } else {
-            cb(null, 'Skip Swagger Plugin');
-        }
+        server.register({
+            register: hapiSwagger,
+            options: {
+                apiVersion: pack.version,
+                basePath: 'http://' + _config.server.host + ':' + _config.server.port,
+                payloadType: 'json'
+            }
+        }, function (err) {
+            var msg = 'Swagger interface loaded';
+            log.cool(msg);
+            cb(err, msg);
+        });
     });
 
     plugin.push(function (callback) {
         var msg = 'Hapi Auth Cookie Enabled';
-        if (plug.hapiPlugin.hapiAuthCookie) {
-            server.register(require('hapi-auth-cookie'), function (err) {
-                server.auth.strategy('session', 'cookie', {
-                    password: _config.cookie.password,
-                    cookie: _config.cookie.cookie,
-                    redirectTo: _config.cookie.redirectTo,
-                    isSecure: _config.cookie.isSecure
-                });
-                callback(err, msg)
+        server.register(require('hapi-auth-cookie'), function (err) {
+            server.auth.strategy('session', 'cookie', {
+                password: _config.cookie.password,
+                cookie: _config.cookie.cookie,
+                redirectTo: _config.cookie.redirectTo,
+                isSecure: _config.cookie.isSecure
             });
-        } else {
-            msg = 'Hapi Auth Cookie Disable';
-            callback(null, msg);
-        }
+            callback(err, msg)
+        });
     });
 
     async.parallel(plugin, function (err, rslt) {
