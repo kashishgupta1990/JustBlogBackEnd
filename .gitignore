@@ -4,4 +4,5 @@ node_modules
 bower_components
 .idea/
 .c9/
+.git/
 custom_modules/es6Support/temp
