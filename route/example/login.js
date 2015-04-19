@@ -15,7 +15,7 @@ module.exports = [
             handler: function (request, reply) {
 
                 //To Authenticate User
-                request.auth.session.set({user: 'guest', password: 'pioneer'});
+                request.auth.session.set({roles: ['user'], password: 'pioneer'});
                 sharedService.emit("someEvent", {name: 'kashish'});
                 reply('successfully login');
 

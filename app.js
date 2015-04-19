@@ -10,6 +10,7 @@ var Hapi = require('hapi'),
     log = require('./custom_modules/custom-imagemin-log'),
     pack = require('./package.json'),
     hapiSwagger = require('hapi-swagger'),
+    hapiRole = require('./custom_modules/hapi-role-manager'),
     good = require('good'),
     EventEmitter = require("events").EventEmitter,
     task = [],
@@ -108,6 +109,24 @@ task.push(function (callback) {
                 console.error(err);
             }
             var msg = 'Good Plugin loaded';
+            log.cool(msg);
+            cb(err, msg);
+        });
+    });
+
+    plugin.push(function (cb) {
+        server.register({
+            register: hapiRole,
+            options: {
+                rolesType: _config.userRoles.rolesType,
+                cookieName: _config.cookie.cookie,
+                roleFieldName: _config.userRoles.roleFieldName
+            }
+        }, function (err) {
+            if (err) {
+                console.error(err);
+            }
+            var msg = 'Hapi Roles Plugin loaded';
             log.cool(msg);
             cb(err, msg);
         });
