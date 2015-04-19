@@ -58,7 +58,7 @@ task.push(function (callback) {
 task.push(function (callback) {
     // Create a server with a host and port
     server = new Hapi.Server();
-    server.connection({port: process.env.PORT = process.env.PORT || _config.server.port});
+    server.connection({port: (process.env.PORT ? process.env.PORT : _config.server.port)});
     callback(null, 'server variable setting up');
 });
 
@@ -71,7 +71,7 @@ task.push(function (callback) {
             register: hapiSwagger,
             options: {
                 apiVersion: pack.version,
-                basePath: 'http://' + _config.server.host + ':' + _config.server.port,
+                basePath: 'http://' + (process.env.HOST ? process.env.HOST : _config.server.host) + ':' + (process.env.PORT ? process.env.PORT : _config.server.port),
                 payloadType: 'json'
             }
         }, function (err) {
@@ -79,7 +79,8 @@ task.push(function (callback) {
             log.cool(msg);
             cb(err, msg);
         });
-    });
+    })
+    ;
 
     plugin.push(function (callback) {
         var msg = 'Hapi Auth Cookie Enabled';
@@ -135,7 +136,8 @@ task.push(function (callback) {
     async.parallel(plugin, function (err, rslt) {
         callback(err, rslt);
     });
-});
+})
+;
 
 //Apply Emitter Binding
 task.push(function (callback) {
@@ -197,7 +199,7 @@ async.series(task, function (err, data) {
     } else {
         // Start the server
         server.start(function () {
-            log.cool('Server running on SERVER: ' + _config.server.host + ' PORT:' + process.env.PORT);
+            log.cool('Server running on SERVER: ' + (process.env.HOST ? process.env.HOST : _config.server.host) + ' PORT:' + (process.env.PORT ? process.env.PORT : _config.server.port));
         });
     }
 });
