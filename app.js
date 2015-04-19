@@ -71,7 +71,6 @@ task.push(function (callback) {
             register: hapiSwagger,
             options: {
                 apiVersion: pack.version,
-                basePath: 'http://' + (process.env.HOST ? process.env.HOST : _config.server.host) + ':' + (process.env.PORT ? process.env.PORT : _config.server.port),
                 payloadType: 'json'
             }
         }, function (err) {
